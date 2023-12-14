@@ -74,7 +74,7 @@
                     pay stations, causing inconveniences and inefficiencies. Automatic License Plate Detection (ALPD) can revolutionize the parking 
                     industry by eliminating all these manual components, providing a fully automated and streamlined parking experience in any 
                     parking scenario.</p>
-                  <p class="mb-0">The projects seeks to develop an efficient ALPD system by combining Machine Learning (ML) and Computer Vision (CV) techniques, 
+                  <p class="mb-0">The project seeks to develop an efficient ALPD system by combining Machine Learning (ML) and Computer Vision (CV) techniques, 
                     addressing the prevalent inaccuracies observed in many current solutions that solely depend on either ML or CV. 
                     The objective was to establish an optimized ML pipeline for ALPD using various machine learning models aided with pretrained 
                     networks and computer vision techniques to find the optimal Machine Learning (ML) pipeline for ALPD. </p>
@@ -146,66 +146,203 @@
                 </div>
               </section>
 
-              <!--Motion Project-->
-            <section id="motion" class="resume-section p-3 p-lg-5 d-flex flex-column">
+              <!--Planner Project-->
+            <section id="planner" class="resume-section p-3 p-lg-5 d-flex flex-column">
                 <div class="my-auto">
-                  <h2 class="mb-5">Live Motion Direction Estimation</h2>
-                  <p>This project delves into the burgeoning field of live motion direction estimation, a pivotal aspect of 
-                    computer vision with broad implications for emerging technologies. In an era where autonomous systems, 
-                    such as self-driving vehicles, augmented reality, and advanced surveillance, are becoming increasingly 
-                    prevalent, the ability to accurately discern the direction of motion from video feeds is crucial. 
-                    This initiative aims to develop a robust system capable of detecting and classifying camera movement directions 
-                    in real-time, leveraging advanced image processing and machine learning techniques. This technology has the 
-                    potential to greatly enhance the accuracy and reliability of motion-based applications.</p>
-                  <p class="mb-0">The success of the algorithm depended on comprehensive data collection and innovative feature extraction 
-                    methods. The team compiled a rich dataset consisting of approximately 4000 images. These images, derived from 
-                    video feeds, were transformed into frames and further processed into disparity maps for detailed analysis. 
-                    The disparity maps were classified into five distinct motion categories: forward, backward, turning left, 
-                    turning right, and stationary. </p>
+                  <h2 class="mb-5">Multi-Robot Motion Planning for Quadruped Robots</h2>
+                  <p>The multi-robot motion planning project addresses the critical challenge of synchronizing multiple robotic agents 
+                    in complex environments. This research is set against a backdrop where the integration of robotics in various fields
+                     has escalated the need for efficient, autonomous multi-robot systems. Quadruped robots, with their versatile 
+                     mobility, pose unique challenges and opportunities in motion planning. The project's aim is to develop a robust 
+                     motion planning framework that ensures efficient, collision-free navigation of these robots, which is crucial for 
+                     applications in areas such as search and rescue, exploration, and automated warehousing.</p>
+                  <p class="mb-0">The project employs three innovative motion planning methods to address the unique challenges 
+                    posed by multi-quadruped robot navigation. Each method was tested on a total of two robots:</p>
+                    <ol type="1">
+                        <li>Sequential RRT Connect: This method simplifies the motion planning process by sequentially planning the 
+                          path for each robot. By treating each robot's path planning independently, the method reduces the 
+                          computational complexity but may lead to suboptimal paths in scenarios where robots' paths heavily intersect.</li>
+                        <li>Joint Space RRT Connect: In contrast to the sequential approach, this method considers all robots 
+                          simultaneously within a joint state-space. This holistic approach allows for a more comprehensive 
+                          understanding of the shared environment, leading to more coordinated and efficient paths. However, 
+                          this comes at the cost of increased computational resources and complexity.</li>
+                        <li>Conflict Based Search: As a middle ground in computational intensity, the developed CBS employs a decentralized approach where each robot plans its 
+                          path independently. A higher-level planner then resolves any conflicts between paths. This method balances 
+                          the individual efficiency of sequential planning and the comprehensive coordination of joint state-space 
+                          planning, aiming to optimize both computational resources and path efficiency.</li>
+                    </ol>
                         <div class="row">
                             <div class="img-fluid img-profile rounded-circle mx-auto mb-2">
-                                <h3><span class="image center"><img src="img/data_col_motion.gif" /> </span></h3>
+                                <h3><span class="image center"><img src="img/seq_rrt_run1.png" /> </span></h3>
                             </div>
                             <div class="img-fluid img-profile rounded-circle mx-auto mb-2">
-                                <h3><span class="image center"><img src="img/change_frame.png" /> </span></h3>
+                                <h3><span class="image center"><img src="img/joint.png" /> </span></h3>
                             </div>
                     </div>
-                    <p>The above gif shows one of the platforms the motion data was collected on. To avoid bias, the data was 
-                        collected on multiple different platforms to keep the models from overfitting to a certain type of motion. For feature extraction, two primary methods were employed. The first involved analyzing changes in pixels over 
-                        time by processing every fifth frame, providing insights into the fundamental aspects of frame change. The 
-                        second method utilized the CV2.stereoSGBM_create function to generate disparity maps from grayscale images,
-                         aiding in the detection of pixel differences or motion between stereo images.
+                    <p>The project's findings, as illustrated in the provided images and tables, offer a vivid portrayal of each 
+                      method's performance. The Sequential RRT-Connect showed rapid path planning but struggled in complex scenarios. 
+                      The Joint State-Space RRT-Connect, while comprehensive, was computationally demanding. The CBS method stood out 
+                      for its balanced approach, effectively navigating complexity with reasonable computational load. The included 
+                      table and images reinforce these findings, showcasing specific success rates, computational times, and path 
+                      efficiencies for each method. The table is shown below.
                     </p>
                     <div class="row">
                         <div class="img-fluid img-profile rounded-circle mx-auto mb-2">
-                            <h3><span class="image center"><img src="img/disparitymap.png" /> </span></h3>
+                            <h3><span class="image center"><img src="img/rough.png" /> </span></h3>
                         </div>
                 </div>
-                <p>The project employed a rigorous evaluation process to determine the most effective method for live motion 
-                    direction estimation. This involved testing various machine learning models, each offering unique strengths 
-                    in handling image data and motion classification. The following models were evaluated:
+                <p>As seen in the first image in this section above, the sequential planner had the largest path as it needed to avoid the path of the first
+                  robot altogether. The joint planner, shown in the image below the sequential planner, peformed better allowing the crossing of paths. However, reducing the path length greatly
+                  increased the cost. The Conflict Based Planner(CBS) performed the best with relatively low computational cost while having the smallest 
+                  average path compared to all the planners. The last image above shows the CBS planner effectively traversing rough terrain and still be 
+                  able to reach the goal location without colliding with other robots or static obstacles.
                 </p>
-                    <ol type="1">
-                        <li>Naive Bayes Classifier: Achieved a baseline accuracy of 74.7%, serving as an initial benchmark for 
-                            comparison with more complex models.</li>
-                        <li>Support Vector Classification (SVC): Demonstrated high efficacy with a 93% accuracy rate, benefiting 
-                            from its strength in high-dimensional space handling.</li>
-                        <li>Linear Neural Networks: Scored an accuracy of 83%, offering insights into the performance of simpler 
-                            neural network architectures in the task.</li>
-                        <li>Convolutional Neural Networks (CNN): Emerged as the most effective, with an impressive 94.6% accuracy, 
-                            showcasing its superior capability in image processing and feature extraction.</li>
-                    </ol>
-                      <p class="mb-0">Conclusively, the project underscores the superiority of CNN in live motion direction estimation, 
-                        particularly in image processing applications. To improve further, 
-                        enhancements such as data augmentation to address motion jitter can be applied to better predict. A demo of
-                        the CNN classifier predicting live motion is given in the gif below. Overall, the 
-                        findings point towards the potential of CNN in real-world 
-                        applications requiring precise motion direction analysis from video feeds.  </p>
-                        <div class="row">
-                            <div class="img-fluid img-profile rounded-circle mx-auto mb-2">
-                                <h3><span class="image center"><img src="img/live_data_gif.gif" /> </span></h3>
-                            </div>
-                    </div>
+                <table class="table">
+                  <tr>
+                    <th>Planner</th>
+                    <th>Average Path Length</th>
+                    <th>Average Planning Time</th>
+                    <th>Success Rate</th>
+                  </tr>
+                  <tr class="bold-line">
+                    <td>Sequential</td>
+                    <td>18.2</td>
+                    <td>0.0943</td>
+                    <td>11/16</td>
+                  </tr>
+                  <tr class="bold-line">
+                    <td>Joint</td>
+                    <td>16.85</td>
+                    <td>1.067</td>
+                    <td>13/16</td>
+                    </tr>
+                    <tr>
+                      <td>Conflict Based Search</td>
+                      <td>15.12</td>
+                      <td>0.254</td>
+                      <td>5/5</td>
+                  </tr>
+                </table>
+                  <p class="mb-0">The results, as visually supported, highlight the importance of context in choosing a 
+                        motion planning strategy. The visual representations and table data emphasize the trade-offs between speed, 
+                        complexity, and efficiency. They illustrate how different scenarios might benefit from different approaches, 
+                        with CBS offering a versatile solution in many cases. The project underlines the need for adaptable, scalable 
+                        solutions in real-world multi-robot applications. </p>
+                       
                 </div>
               </section>
+               <!--Planning Project-->
+            <section id="motion" class="resume-section p-3 p-lg-5 d-flex flex-column">
+              <div class="my-auto">
+                <h2 class="mb-5">Live Motion Direction Estimation</h2>
+                <p>This project delves into the burgeoning field of live motion direction estimation, a pivotal aspect of 
+                  computer vision with broad implications for emerging technologies. In an era where autonomous systems, 
+                  such as self-driving vehicles, augmented reality, and advanced surveillance, are becoming increasingly 
+                  prevalent, the ability to accurately discern the direction of motion from video feeds is crucial. 
+                  This initiative aims to develop a robust system capable of detecting and classifying camera movement directions 
+                  in real-time, leveraging advanced image processing and machine learning techniques. This technology has the 
+                  potential to greatly enhance the accuracy and reliability of motion-based applications.</p>
+                <p class="mb-0">The success of the algorithm depended on comprehensive data collection and innovative feature extraction 
+                  methods. The team compiled a rich dataset consisting of approximately 4000 images. These images, derived from 
+                  video feeds, were transformed into frames and further processed into disparity maps for detailed analysis. 
+                  The disparity maps were classified into five distinct motion categories: forward, backward, turning left, 
+                  turning right, and stationary. </p>
+                      <div class="row">
+                          <div class="img-fluid img-profile rounded-circle mx-auto mb-2">
+                              <h3><span class="image center"><img src="img/data_col_motion.gif" /> </span></h3>
+                          </div>
+                          <div class="img-fluid img-profile rounded-circle mx-auto mb-2">
+                              <h3><span class="image center"><img src="img/change_frame.png" /> </span></h3>
+                          </div>
+                  </div>
+                  <p>The above gif shows one of the platforms the motion data was collected on. To avoid bias, the data was 
+                      collected on multiple different platforms to keep the models from overfitting to a certain type of motion. For feature extraction, two primary methods were employed. The first involved analyzing changes in pixels over 
+                      time by processing every fifth frame, providing insights into the fundamental aspects of frame change. The 
+                      second method utilized the CV2.stereoSGBM_create function to generate disparity maps from grayscale images,
+                       aiding in the detection of pixel differences or motion between stereo images.
+                  </p>
+                  <div class="row">
+                      <div class="img-fluid img-profile rounded-circle mx-auto mb-2">
+                          <h3><span class="image center"><img src="img/disparitymap.png" /> </span></h3>
+                      </div>
+              </div>
+              <p>The project employed a rigorous evaluation process to determine the most effective method for live motion 
+                  direction estimation. This involved testing various machine learning models, each offering unique strengths 
+                  in handling image data and motion classification. The following models were evaluated:
+              </p>
+                  <ol type="1">
+                      <li>Naive Bayes Classifier: Achieved a baseline accuracy of 74.7%, serving as an initial benchmark for 
+                          comparison with more complex models.</li>
+                      <li>Support Vector Classification (SVC): Demonstrated high efficacy with a 93% accuracy rate, benefiting 
+                          from its strength in high-dimensional space handling.</li>
+                      <li>Linear Neural Networks: Scored an accuracy of 83%, offering insights into the performance of simpler 
+                          neural network architectures in the task.</li>
+                      <li>Convolutional Neural Networks (CNN): Emerged as the most effective, with an impressive 94.6% accuracy, 
+                          showcasing its superior capability in image processing and feature extraction.</li>
+                  </ol>
+                    <p class="mb-0">Conclusively, the project underscores the superiority of CNN in live motion direction estimation, 
+                      particularly in image processing applications. To improve further, 
+                      enhancements such as data augmentation to address motion jitter can be applied to better predict. A demo of
+                      the CNN classifier predicting live motion is given in the gif below. Overall, the 
+                      findings point towards the potential of CNN in real-world 
+                      applications requiring precise motion direction analysis from video feeds.  </p>
+                      <div class="row">
+                          <div class="img-fluid img-profile rounded-circle mx-auto mb-2">
+                              <h3><span class="image center"><img src="img/live_data_gif.gif" /> </span></h3>
+                          </div>
+                  </div>
+              </div>
+            </section>
+          </section>
+          <!--Planning Project-->
+       <section id="kalman" class="resume-section p-3 p-lg-5 d-flex flex-column">
+         <div class="my-auto">
+           <h2 class="mb-5">Evaluation of IMU and MOCAP Sensor Fusion on Quadrotor Controller</h2>
+           <p>This project addresses the challenge of enhancing quadrotor controllers' performance. 
+            By integrating Inertial Measurement Unit (IMU) and Motion Capture (MOCAP) data, the research seeks to improve the 
+            quadrotor's stability and responsiveness, especially under dynamic conditions. This integration is crucial for 
+            applications requiring precise control and maneuverability, like aerial photography, surveillance, and search and 
+            rescue operations.</p>
+           <p class="mb-0">The experimental setup includes a quadrotor equipped with IMU and MOCAP systems. A Kalman Filter 
+            is utilized for data fusion, combining the high-frequency IMU data with the accurate but slower MOCAP data.  This fusion aims to leverage the high update rate of IMU data (1000 Hz) against the more accurate but slower MOCAP data (50 Hz). The 
+            setup aims to optimize the state estimation process, providing the controller with more accurate and timely information. 
+            Test scenarios include standard point-tracking and response to external disturbances, with a focus on evaluating 
+            improvements in positional accuracy and disturbance recovery. The control algorithms are adjusted to accommodate the
+             fused sensor data, aiming to exploit the strengths of both IMU and MOCAP systems.</p>
+                 <div class="row">
+                     <div class="img-fluid img-profile rounded-circle mx-auto mb-2">
+                         <h3><span class="image center"><img src="img/z_pos_old.png" /> </span></h3>
+                     </div>
+                     <div class="img-fluid img-profile rounded-circle mx-auto mb-2">
+                         <h3><span class="image center"><img src="img/z_pos_new.png" /> </span></h3>
+                     </div>
+             </div>
+             <p>The results showcase significant findings. In standard point-tracking tests, the integrated controller demonstrated 
+              a marginal improvement in trajectory accuracy. As shown in the image above, after applying the controller the Z position of the 
+              drone converged at the same speed before and after applying the kalman filter. However, its performance in disturbance response tests was notably better,
+               particularly in maintaining yaw stability. The results, illustrated through detailed images below compare the 
+               performance improvement of the quadrotor with and without sensor fusion. As shown in the images below, before applying the sensor filter
+               the yaw motion of the drone diverged towards infinity when a disturbance was applied. On the contrary, with the filter applied to
+               the quadrotor, the yaw quickly converges back to zero when an unwanted force is applied.
+             </p>
+             <div class="row">
+              <div class="img-fluid img-profile rounded-circle mx-auto mb-2">
+                  <h3><span class="image center"><img src="img/yaw_old.png" /> </span></h3>
+              </div>
+              <div class="img-fluid img-profile rounded-circle mx-auto mb-2">
+                  <h3><span class="image center"><img src="img/yaw_new.png" /> </span></h3>
+              </div>
+      </div>
+         <p>The data collection shows substantial improvement in the drones performance after applying the filter. The enhanced disturbance recovery capability of the 
+          integrated controller is a key highlight, indicating potential for improved resilience in dynamic environments. 
+          However, the limited improvement in standard flight conditions suggests the need for further refinement. The discussion 
+          also considers potential optimizations and the broader applicability of these findings in real-world scenarios, where 
+          quadrotors often face varying environmental conditions.
+         </p>
+               <p class="mb-0">In conclusion, the project demonstrates the potential benefits of IMU and MOCAP sensor fusion in 
+                quadrotor controllers, particularly for disturbance recovery. While further research is needed to maximize benefits 
+                in standard flight scenarios, this study lays a strong foundation for developing more robust and reliable control 
+                systems for quadrotors in complex operational environments where there are plenty of unpredictable large disturbances.  </p>
+         </div>
+       </section>
         </div> 
