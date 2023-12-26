@@ -7,3 +7,57 @@
  .bold-line {
     border-bottom: 2px solid black; /* Adjust the pixel value to make the line bolder or thinner */
   }
+
+  /* Item */
+
+	.item {
+		box-shadow: 0 0.05em 0.15em 0 rgba(0, 0, 0, 0.05);
+		margin-bottom: 40px;
+		border: 1px solid #eaeaea; /* Adjust the color as needed */
+  		transition: transform 0.3s ease; /* Smooth transition for scaling */
+	}
+
+	.item:hover {
+  		transform: scale(1.05); /* Slightly enlarges the item */
+  		z-index: 10; /* Ensures the item is above the others on hover */
+	}
+
+		.item header {
+			background: #fff;
+			margin: 0;
+			padding: 1em 0 1em 0;
+			font-size: 0.8em;
+		}
+
+			.item header h3 {
+				font-size: 1.75em;
+			}
+
+			/* Ensure images are uniformly styled */
+			.item img {
+				display: block;
+				width: 100%;
+				height: auto;
+				transition: transform 0.3s ease; /* Transition for image only if desired */
+			  }
+			  
+			  .item:hover img {
+				transform: scale(1.03); /* Slightly enlarges the image */
+			  }
+
+        .project-buttons {
+          text-align: center; /* Centers the buttons within the div */
+          margin-top: 20px; /* Adds space above the buttons */
+        }
+        
+        .project-buttons .btn {
+          margin: 5px; /* Adds space between the buttons */
+          background-color: #bd5d38; /* Example color - choose what matches your site */
+          color: white; /* Text color */
+          border: none; /* Removes border */
+          transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+        
+        .project-buttons .btn:hover {
+          background-color: #cc3700; /* Darker shade for hover effect */
+        }
